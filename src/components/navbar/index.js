@@ -10,7 +10,7 @@ import {
   NavbarText
 } from 'reactstrap';
 import logo from '../../img/logo.png';
-import '../../css/home/index.css';
+import '../../css/navbar/index.css';
 
 export default function NavBar() {
      const [isOpen, setIsOpen] = React.useState(false);

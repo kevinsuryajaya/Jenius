@@ -1,27 +1,40 @@
 import * as React from "react";
 import axios from "axios";
+import styled from "styled-components";
+import { Row, Col } from "reactstrap";
+import CustomCard from "../../components/card";
 
+const StyledColumn = styled(Col)`
+  margin-bottom: 20px;
+`;
 export default function Home() {
   const [data, setData] = React.useState([]);
 
-React.useEffect(()=>{
+  React.useEffect(() => {
     axios({
-        method:'GET',
-        url: 'https://simple-contact-crud.herokuapp.com/contact'
-    }).then(res=>{
-        setData(res.data.data);
-    })
-},[]);
-  console.log(data);
+      method: "GET",
+      url: "https://simple-contact-crud.herokuapp.com/contact",
+    }).then((res) => {
+      setData(res.data.data);
+    });
+  }, []);
+
   return (
     <React.Fragment>
-      <ul>
-        {data.map(contact => (
-          <li key={contact.id}>
-            <p>{contact.firstName}</p>
-          </li>
+      <Row>
+        {data.map((contact) => (
+          <StyledColumn md="3">
+            <CustomCard
+              key={contact.id}
+              id={contact.id}
+              firstName={contact.firstName}
+              lastName={contact.lastName}
+              age={contact.age}
+              photo={contact.photo}
+            />
+          </StyledColumn>
         ))}
-      </ul>
+      </Row>
     </React.Fragment>
   );
 }
