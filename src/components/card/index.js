@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -43,7 +43,7 @@ export default function CustomCard({
 }: Props): React.Node {
   return (
     <React.Fragment>
-      <Link to={{ pathname: `/contact-detail/` + id }}>
+      <StyledLink to={{ pathname: `/contact-detail/` + id }}>
         <Card>
           <CardImg className="card__image" src={photo} alt="photo" />
           <CardBody>
@@ -52,7 +52,7 @@ export default function CustomCard({
             <CardText>{age}</CardText>
           </CardBody>
         </Card>
-      </Link>
+      </StyledLink>
     </React.Fragment>
   );
 }

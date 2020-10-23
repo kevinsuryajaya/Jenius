@@ -29,6 +29,9 @@ export default function NavBar() {
             <NavItem>
               <NavLink href="/">Bisnis</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="/">Add Contact</NavLink>
+            </NavItem>
           </Nav>
           <NavbarText>Get Jenius</NavbarText>
         </Collapse>
