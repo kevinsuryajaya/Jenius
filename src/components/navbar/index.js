@@ -30,7 +30,7 @@ export default function NavBar() {
               <NavLink href="/">Bisnis</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/">Add Contact</NavLink>
+              <NavLink href="/add-contact">Add Contact</NavLink>
             </NavItem>
           </Nav>
           <NavbarText>Get Jenius</NavbarText>

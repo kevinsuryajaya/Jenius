@@ -1,38 +1,29 @@
-.header__title{
-    margin-top: 10px;
-    margin-bottom: 0px;
+.image__section {
+  margin-bottom: 10px;
 }
 
-.header__subtitle{
-    margin-bottom: 5px;
+.image__value {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
 
-.image__section{
-    margin-bottom: 10px;
+.detail {
+  display: flex;
 }
 
-.image__value{
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
+.detail__section {
+  text-align: right;
+  width: 50px;
+  margin-right: 15px;
 }
 
-.detail{
-    display: flex;
-}
-
-.detail__section{
-    text-align: right;
-    width: 50px;
-    margin-right: 15px;
-}
-
-.detail__button{
-    background-color: #0275db;
-    color: white;
-    font-weight: 600;
-    border: 0px;
-    border-radius: 5px;
-    width: 50%;
-    padding: 5px;
+.detail__button {
+  background-color: #0275db;
+  color: white;
+  font-weight: 600;
+  border: 0px;
+  border-radius: 5px;
+  width: 50%;
+  padding: 5px;
 }
