@@ -29,12 +29,8 @@ const StyledButton = styled.button`
   margin-top: 20px;
 `;
 
-export default function AddContact() {
-  const [addContact, setAddContact] = React.useState({
-    firstName: "",
-    lastName: "",
-    age: "",
-  });
+export default function UpdateContact(props) {
+  const [updateContact, setUpdateContact] = React.useState([]);
 
   const [status, setStatus] = React.useState("");
   const [modal, setModal] = React.useState(false);
@@ -42,13 +38,33 @@ export default function AddContact() {
   const toggle = () => setModal(!modal);
 
   const handleChange = (event) => {
-    setAddContact({ ...addContact, [event.target.name]: event.target.value });
+    setUpdateContact({
+      ...updateContact,
+      [event.target.name]: event.target.value,
+    });
   };
 
+  React.useEffect(() => {
+    axios({
+      method: "GET",
+      url: `https://simple-contact-crud.herokuapp.com/contact/${props.match.params.id}`,
+    }).then((res) => {
+      setUpdateContact(res.data.data);
+    });
+  }, []);
+  var temp = {
+    firstName: updateContact.firstName,
+    lastName: updateContact.lastName,
+    age: updateContact.age,
+    photo: updateContact.photo,
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("https://simple-contact-crud.herokuapp.com/contact", addContact)
+    axios({
+      method: "PUT",
+      url: `https://simple-contact-crud.herokuapp.com/contact/${props.match.params.id}`,
+      data: temp,
+    })
       .then(function (response) {
         console.log(response.data);
         setStatus(response.data.message);
@@ -58,11 +74,14 @@ export default function AddContact() {
         setStatus("Bad Request (400)");
       });
   };
-
+  console.log(temp);
   return (
     <React.Fragment>
       <StyledContainer>
-        <SectionHeader title={"Add Contact"} subtitle={"Add some contact"} />
+        <SectionHeader
+          title={"Update Contact"}
+          subtitle={"Update contact detail"}
+        />
         <Row>
           <Col md="6">
             <form className="" onSubmit={handleSubmit}>
@@ -71,7 +90,7 @@ export default function AddContact() {
                 name="firstName"
                 id="firstName"
                 label="First Name"
-                value={addContact.firstName}
+                value={updateContact.firstName}
                 onChange={handleChange}
               />
               <CustomInput
@@ -79,7 +98,7 @@ export default function AddContact() {
                 name="lastName"
                 id="lastName"
                 label="Last Name"
-                value={addContact.lastName}
+                value={updateContact.lastName}
                 onChange={handleChange}
               />
               <CustomInput
@@ -87,13 +106,13 @@ export default function AddContact() {
                 name="age"
                 id="age"
                 label="Age"
-                value={addContact.age}
+                value={updateContact.age}
                 onChange={handleChange}
               />
 
               <div className="input-field">
                 <StyledButton type="submit" onClick={toggle}>
-                  Add Contact
+                  Update Contact
                 </StyledButton>
               </div>
             </form>

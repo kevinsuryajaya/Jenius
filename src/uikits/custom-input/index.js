@@ -20,7 +20,7 @@ export default function CustomInput({
   type,
   name,
   id,
-  error,
+  value,
   onChange,
 }: Props): React.Node {
   return (
@@ -30,6 +30,7 @@ export default function CustomInput({
           type={type}
           name={name}
           id={id}
+          value={value}
           placeholder="Empty"
           required
           onChange={(e) => {

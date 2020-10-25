@@ -11,6 +11,10 @@ import {
 import styled from "styled-components";
 import "../../css/card/index.css";
 
+const StyledCard = styled(Card)`
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`;
+
 const StyledLink = styled(Link)`
   color: #000;
 `;
@@ -44,14 +48,14 @@ export default function CustomCard({
   return (
     <React.Fragment>
       <StyledLink to={{ pathname: `/contact-detail/` + id }}>
-        <Card>
+        <StyledCard>
           <CardImg className="card__image" src={photo} alt="photo" />
           <CardBody>
             <CardTitle>{firstName}</CardTitle>
             <CardSubtitle>{lastName}</CardSubtitle>
             <CardText>{age}</CardText>
           </CardBody>
-        </Card>
+        </StyledCard>
       </StyledLink>
     </React.Fragment>
   );

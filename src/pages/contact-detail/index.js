@@ -2,6 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Container, Row, Col } from "reactstrap";
+import { Link } from "react-router-dom";
 import SectionHeader from "../../uikits/section-header";
 import "../../css/contact-detail/index.css";
 
@@ -25,7 +26,17 @@ export default function ContactDetail(props) {
     set_id_contact(props.match.params.id);
   }, []);
 
-  console.log(props);
+  // const url = `https://simple-contact-crud.herokuapp.com/contact/${id_contact}`
+  // const deleteTutorial = (url) => {
+  //   axios.delete(url)
+  //     .then(response => {
+  //       console.log(response)
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+
+  // }
   return (
     <React.Fragment>
       <StyledContainer>
@@ -60,7 +71,10 @@ export default function ContactDetail(props) {
                 <p>{data.age}</p>
               </div>
             </div>
-            <button className="detail__button">Edit</button>
+            <Link to={{ pathname: `/update-contact/` + id_contact }}>
+              <button className="detail__button">Edit</button>
+            </Link>
+            <button className="detail__button detail--danger">Delete</button>
           </Col>
         </Row>
       </StyledContainer>
